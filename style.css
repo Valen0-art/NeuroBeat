@@ -1,0 +1,199 @@
+/* --- style.css COMPACTO Y FUTURISTA --- */
+
+/* Importar una fuente futurista similar a la de la imagen 2 */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+:root {
+    --bg-color: #050505;
+    --panel-color: #0a0a10; /* Un poco más claro que el fondo */
+    --main-neon: #00f2ff; /*cian neón*/
+    --sub-neon: #00ff88; /*verde neón sutil*/
+    --text-color: #ffffff;
+    --text-muted: #8888aa;
+}
+
+* {
+    box-sizing: border-box; /* Evita que el padding rompa el diseño */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente base limpia */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa exactamente el alto de la pantalla */
+    margin: 0;
+    overflow: hidden; /* Evita scrolls incómodos */
+}
+
+/* Títulos y acentos con la fuente futurista */
+h1, .subtitle, #counter, .status-badge, .time-display, footer p {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+}
+
+/* --- Animación de Fondo --- */
+#neural-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Detrás del panel principal */
+}
+
+/* --- Panel Principal Centrado --- */
+.main-container {
+    background-color: var(--panel-color);
+    border: 2px solid #1a1a2a;
+    border-radius: 15px;
+    
+    /* AJUSTE CLAVE: Reducimos el padding y el ancho máximo para adaptabilidad */
+    padding: 20px 40px; 
+    width: 85%;
+    max-width: 750px;
+    
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+    position: relative; /* Para las esquinas decorativas */
+    text-align: center;
+}
+
+/* Esquinas decorativas neón (Mantenidas de la visual anterior) */
+.corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+}
+.top-left { top: 15px; left: 15px; border-top-color: var(--main-neon); border-left-color: var(--main-neon); }
+.top-right { top: 15px; right: 15px; border-top-color: var(--main-neon); border-right-color: var(--main-neon); }
+.bottom-left { bottom: 15px; left: 15px; border-bottom-color: var(--main-neon); border-left-color: var(--main-neon); }
+.bottom-right { bottom: 15px; right: 15px; border-top-color: var(--main-neon); border-right-color: var(--main-neon); } /* Corrección: border-bottom */
+
+/* --- Cabecera --- */
+h1 {
+    font-size: 2.5rem; 
+    color: var(--text-color);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    margin: 5px 0;
+    letter-spacing: 4px;
+}
+
+.subtitle {
+    color: var(--sub-neon);
+    font-size: 0.75rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* --- Panel de Control --- */
+.control-panel {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+#startBtn {
+    padding: 10px 20px;
+    background: transparent;
+    border: 2px solid var(--main-neon);
+    color: var(--main-neon);
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+#startBtn:hover {
+    background-color: rgba(0, 242, 255, 0.1);
+    box-shadow: 0 0 15px var(--main-neon);
+}
+
+.status-badge {
+    color: var(--sub-neon);
+    font-size: 0.9rem;
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    padding: 8px 18px;
+    border-radius: 20px;
+}
+
+.status-dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    background-color: var(--sub-neon);
+    border-radius: 50%;
+    margin-right: 8px;
+    box-shadow: 0 0 10px var(--sub-neon);
+}
+
+/* --- Sección del Contador --- */
+.counter-section {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon-square {
+    width: 35px; height: 35px;
+    border: 3px solid var(--main-neon);
+    margin-bottom: 10px;
+    position: relative;
+}
+.icon-square::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 0; width: 100%; height: 3px; background-color: var(--main-neon);
+    transform: translateY(-50%) rotate(-45deg);
+}
+
+#counter {
+    font-size: 5rem; 
+    color: var(--main-neon);
+    text-shadow: 0 0 20px var(--main-neon);
+    line-height: 1;
+}
+
+.counter-display p {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin: 5px 0 0 0;
+    text-transform: uppercase;
+}
+
+/* --- Sección del Reproductor --- */
+audio {
+    width: 100%;
+    margin-bottom: 10px;
+    height: 35px; /* Más compacto */
+}
+/* Estilo personalizado básico para controles de audio (navegadores webkit) */
+audio::-webkit-media-controls-panel { background-color: #161658; }
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display { color: #fff; }
+
+.time-display {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* --- Footer --- */
+footer {
+    margin-top: 20px;
+    border-top: 1px solid #1a1a2a;
+    padding-top: 10px;
+}
+
+footer p {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.7rem;
+    margin: 0;
+}

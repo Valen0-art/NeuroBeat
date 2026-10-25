@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NeuroBeat | Adaptive Interaction</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <canvas id="neural-canvas"></canvas>
+
+    <div class="main-container">
+
+        <div class="corner top-left"></div>
+        <div class="corner top-right"></div>
+        <div class="corner bottom-left"></div>
+        <div class="corner bottom-right"></div>
+
+
+        <header>
+
+            <h1>NEUROBEAT</h1>
+
+            <p class="subtitle">
+                ● ADAPTIVE INTERACTION ACTIVE
+            </p>
+
+        </header>
+
+
+        <main>
+
+            <!-- CONTROL DEL MOTOR -->
+
+            <div class="control-panel">
+
+                <button id="startBtn">
+                    VINCULAR ESCRITORIO
+                </button>
+
+
+                <div class="status-badge">
+
+                    <span class="status-dot"></span>
+
+                    <span id="status-text">
+                        Estado: Esperando...
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACTIVIDAD -->
+
+            <div class="counter-section">
+
+                <div class="icon-square"></div>
+
+                <div class="counter-display">
+
+                    <span id="counter">
+                        0
+                    </span>
+
+                    <p>
+                        EVENTOS DE INTERACCIÓN / SEGUNDO
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- INFORMACIÓN DE AUDIO -->
+
+            <div class="player-section">
+
+                <p id="track-name">
+                    Canción 1
+                </p>
+
+                <audio
+                    id="audioPlayer"
+                    controls
+                >
+
+                    <source
+                        src="./Canción 1.mp3"
+                        type="audio/mpeg"
+                    >
+
+                    Tu navegador no soporta audio.
+
+                </audio>
+
+            </div>
+
+        </main>
+
+
+        <footer>
+
+            <p>
+            | INGENIERÍA DE SISTEMAS | 2026
+            </p>
+
+        </footer>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
